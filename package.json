@@ -19,6 +19,9 @@
     "express": "^4.6.1",
     "gulp-util": "latest",
     "gulp-livereload": "^2.1.0"
+  },
+  "dependencies": {
+    "jquery": "2.1.1"
   }
 
 }
