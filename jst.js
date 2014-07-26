@@ -4,7 +4,7 @@ module.exports = {
 
   CSS: {
     
-      'p2phlsstats': '@font-face{font-family:StatsFont;src:url(assets/visitor.ttf) format("truetype")}.p2phlsstats[data-p2phlsstats]{font-family:StatsFont;position:absolute;text-align:center;z-index:3001;top:20px;left:20px;font-smooth:never;-webkit-font-smoothing:none;background-color:rgba(0,0,0,.7);color:#fff;border-radius:3px;width:140px;height:130px;letter-spacing:.01em;padding-top:11px;font-size:10px}div[data-p2phlsstats]:before{content:"statistics here"}',
+      'p2phlsstats': '@font-face{font-family:StatsFont;src:url(assets/visitor.ttf) format("truetype")}.p2phlsstats[data-p2phlsstats]{font-family:StatsFont;position:absolute;text-align:left;z-index:3001;top:20px;left:20px;font-smooth:never;-webkit-font-smoothing:none;background-color:rgba(0,0,0,.7);color:#fff;border-radius:3px;width:144px;height:125px;letter-spacing:.01em;padding-top:11px;font-size:10px;padding-left:5px}',
     
   }
 };
