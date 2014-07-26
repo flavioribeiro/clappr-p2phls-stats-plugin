@@ -21,7 +21,8 @@
     "gulp-livereload": "^2.1.0"
   },
   "dependencies": {
-    "jquery": "2.1.1"
+    "jquery": "2.1.1",
+    "mousetrap": "0.0.1"
   }
 
 }

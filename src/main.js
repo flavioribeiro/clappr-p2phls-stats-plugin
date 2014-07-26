@@ -1,6 +1,7 @@
 var UIPlugin = require('ui_plugin');
 var JST = require('.././jst');
 var Styler = require('./styler');
+var Mousetrap = require('mousetrap');
 
 class P2PHLSStats extends UIPlugin {
   get name() { return 'p2phlsstats' }
@@ -10,23 +11,34 @@ class P2PHLSStats extends UIPlugin {
     return {'data-p2phlsstats': '',
             'class': 'p2phlsstats'}
   }
-  get events() { return {'click': 'clicked'}}
 
   initialize(options) {
     super(options)
     this.render()
+    this.addListeners()
+    this.hide()
   }
 
-  clicked(e) {
-    console.log("clickeddd")
+  addListeners() {
+    Mousetrap.bind('ctrl+s', () => this.showOrHide());
+  }
+
+  showOrHide() {
+    if (this.showing) {
+      this.hide()
+    } else {
+      this.show()
+    }
   }
 
   show() {
-    this.$el.show();
+    this.$el.show()
+    this.showing = true
   }
 
   hide() {
-    this.$el.hide();
+    this.$el.hide()
+    this.showing = false
   }
 
   render() {
