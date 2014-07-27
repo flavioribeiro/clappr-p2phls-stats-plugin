@@ -20,6 +20,7 @@ class P2PHLSStats extends UIPlugin {
     this.addListeners()
     this.hide()
     this.metrics = {
+      status: "off",
       chunksFromCDN: 0,
       chunksFromP2P: 0,
       chunksSent: 0,
@@ -60,6 +61,11 @@ class P2PHLSStats extends UIPlugin {
 
   updateMetrics() {
     this.$el.html(this.template(this.metrics))
+    if (this.metrics.status === "off") {
+      this.$el.find("span.stats-status").css({'color': '#FF0000'})
+    } else {
+      this.$el.find("span.stats-status").css({'color': '#7CFC00'})
+    }
   }
 
   render() {

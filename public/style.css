@@ -36,3 +36,7 @@
   text-align: left;
   margin-bottom: 3px;
 }
+
+.p2phlsstats[data-p2phlsstats] span.stats-status {
+  display: inline;
+}
