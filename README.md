@@ -1,7 +1,7 @@
 BemTV Stats plugin for Clappr Player
 ==============================================
 
-This plugin adds a *stats for nerds* box inside [Clappr](http://github.com/globo/clappr) player showing some useful informations about your P2P/HLS playback, powered by [BemTV](http://github.com/bemtv).
+This plugin adds a *stats for nerds* box inside [Clappr](http://github.com/globocom/clappr) player showing some useful informations about your P2P/HLS playback, powered by [BemTV](http://github.com/bemtv).
 
 ![BemTV Stats Plugin for Clappr Media Player](http://bem.tv/stats_1.png)
 
