@@ -33,7 +33,7 @@ class P2PHLSStats extends UIPlugin {
 
   addListeners() {
     Mousetrap.bind('ctrl+s', () => this.showOrHide())
-    this.listenTo(this.container, 'container:p2phlsstats:add', (metric) => this.statsAdd(metric))
+    this.listenTo(this.container.playback, 'playback:p2phlsstats:add', (metric) => this.statsAdd(metric))
   }
 
   statsAdd(metric) {
