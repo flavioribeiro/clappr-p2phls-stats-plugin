@@ -23,10 +23,11 @@ class P2PHLSStats extends UIPlugin {
       status: "off",
       chunksFromCDN: 0,
       chunksFromP2P: 0,
-      chunksSent: 0,
+      chunksSent: '-',
       swarmSize: 0,
       currentBitrate: 0,
       state: "IDLE",
+      dframes: "-",
     }
     this.updateMetrics()
   }
