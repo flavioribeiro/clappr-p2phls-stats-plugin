@@ -2,6 +2,7 @@ var UIPlugin = require('ui_plugin');
 var JST = require('.././jst');
 var Styler = require('./styler');
 var Mousetrap = require('mousetrap');
+var $ = require('jquery');
 
 class P2PHLSStats extends UIPlugin {
   get name() { return 'p2phlsstats' }
@@ -18,10 +19,25 @@ class P2PHLSStats extends UIPlugin {
     this.render()
     this.addListeners()
     this.hide()
+    this.metrics = {
+      chunksFromCDN: 0,
+      chunksFromP2P: 0,
+      chunksSent: 0,
+      swarmSize: 0,
+      currentBitrate: 0,
+      state: "IDLE",
+    }
+    this.updateMetrics()
   }
 
   addListeners() {
-    Mousetrap.bind('ctrl+s', () => this.showOrHide());
+    Mousetrap.bind('ctrl+s', () => this.showOrHide())
+    this.listenTo(this.container, 'container:p2phlsstats:add', (metric) => this.statsAdd(metric))
+  }
+
+  statsAdd(metric) {
+    $.extend(this.metrics, metric)
+    this.updateMetrics()
   }
 
   showOrHide() {
@@ -42,20 +58,12 @@ class P2PHLSStats extends UIPlugin {
     this.showing = false
   }
 
-  templateWithData() {
-    return this.template({
-      chunksFromCDN: 10,
-      chunksFromP2P: 2,
-      chunksSent: 3,
-      swarmSize: 2,
-      currentBitrate: 1264,
-      state: "PLAYING_BUFFERING",
-    })
+  updateMetrics() {
+    this.$el.html(this.template(this.metrics))
   }
 
   render() {
     var style = Styler.getStyleFor(this.name)
-    this.$el.html(this.templateWithData())
     this.container.$el.append(style)
     this.container.$el.append(this.$el)
     return this
