@@ -2,7 +2,7 @@
 var _ = require('underscore');
 module.exports = {
 
-  'p2phlsstats': _.template('<p>bemtv p2p/hls stats</p><span>status: <span class="stats-status"><%= status %></span></span><span>chunks from CDN: <%= chunksFromCDN %></span><span>chunks from p2p: <%= chunksFromP2P %></span><span>chunks sent: <%= chunksSent %></span><span>swarm size: <%= swarmSize %></span><span>bitrate: <%= currentBitrate %> kb</span><span>state: <%= state %></span><span>dropped frames: <%= dframes %></span>'),
+  'p2phlsstats': _.template('<p>bemtv p2p/hls stats</p><span>status: <span class="stats-status"><%= status %></span></span><span>chunks from CDN: <%= chunksFromCDN %></span><span>chunks from p2p: <%= chunksFromP2P %></span><span>chunks sent: <%= chunksSent %></span><span>swarm size: <%= swarmSize %></span><span>bitrate: <%= currentBitrate %> kb</span><span>state: <%= state %></span><span>local buffer: <%= bufferLength %></span>'),
 
   CSS: {
     

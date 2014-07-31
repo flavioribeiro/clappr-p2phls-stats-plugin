@@ -27,7 +27,7 @@ class P2PHLSStats extends UIPlugin {
       swarmSize: 0,
       currentBitrate: 0,
       state: "IDLE",
-      dframes: "-",
+      bufferLength: 0,
     }
     this.updateMetrics()
   }
