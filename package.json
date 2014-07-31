@@ -1,5 +1,7 @@
 {
   "name": "p2phlsstats",
+  "description": "BemTV P2PHLS Statistics plugin for Clappr Media Player",
+  "keywords": ["hls", "p2p", "http live streaming", "statistics", "peer-to-peer"],
   "version": "0.0.4",
   "dependencies": {
     "clappr": "latest"
