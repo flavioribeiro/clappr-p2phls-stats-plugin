@@ -18,7 +18,6 @@ class P2PHLSStats extends UIPlugin {
     super(options)
     this.render()
     this.addListeners()
-    this.hide()
     this.metrics = {
       status: "off",
       chunksFromCDN: 0,
