@@ -31,6 +31,8 @@ gulp.task('build', ['pre-build'], function(b) {
     .external('ui_plugin')
     .external('ui_object')
     .external('base_object')
+    .external('jquery')
+    .external('underscore')
     .bundle()
     .pipe(source('main.js'))
     .pipe(rename( 'p2phlsstats' + (isProd ? '.min.js' : '.js')));
@@ -63,7 +65,7 @@ gulp.task('serve', ['watch'], function() {
   express()
     .use(express.static('.'))
     .use(express.static('./dist'))
-    .listen(3000);
+    .listen(3000, "0.0.0.0");
   util.log(util.colors.bgGreen('Listening on port 3000'));
 });
 
@@ -86,5 +88,4 @@ gulp.task('watch', function() {
   });
   util.log(util.colors.bgGreen('Watching for changes...'));
 });
-
 
