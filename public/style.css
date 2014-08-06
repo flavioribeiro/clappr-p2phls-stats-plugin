@@ -1,6 +1,9 @@
 @font-face {
-  font-family: StatsFont;
-  src: url("assets/visitor.ttf") format("truetype");
+  font-family: "StatsFont";
+  src: url("assets/visitor.eot");
+  src: url("assets/visitor.eot?#iefix") format("embedded-opentype"),
+       url("assets/visitor.ttf") format("truetype"),
+       url("assets/visitor.svg#player") format("svg");
 }
 
 .p2phlsstats[data-p2phlsstats] {
