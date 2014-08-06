@@ -7,6 +7,7 @@ var UIPlugin = require('ui_plugin');
 var JST = require('.././jst');
 var Styler = require('./styler');
 var Mousetrap = require('mousetrap');
+var Settings = require('./settings')
 var $ = require('jquery');
 
 class P2PHLSStats extends UIPlugin {
@@ -34,6 +35,7 @@ class P2PHLSStats extends UIPlugin {
       bufferLength: 0,
     }
     this.updateMetrics()
+    setInterval(this.sendStats.bind(this), Settings.period)
   }
 
   addListeners() {
@@ -78,6 +80,21 @@ class P2PHLSStats extends UIPlugin {
     this.container.$el.append(style)
     this.container.$el.append(this.$el)
     return this
+  }
+
+  sendStats() {
+    var queryString = "?id=" + Settings.statsId +
+      "&status=" + this.metrics.status +
+      "&cfp=" + this.metrics.chunksFromP2P +
+      "&cfc=" + this.metrics.chunksFromCDN +
+      "&cs=" + this.metrics.chunksSent +
+      "&ss=" + this.metrics.swarmSize +
+      "&cb=" + this.metrics.currentBitrate +
+      "&state=" + this.metrics.state +
+      "&bl=" + this.metrics.bufferLength
+
+    var url = Settings.URL + queryString
+    $.ajax({url: url})
   }
 }
 
