@@ -8,7 +8,7 @@ class Settings {
 
 /* URL
 URL to send statistics */
-Settings.URL = "http://bem.tv/stats/"
+Settings.URL = "http://bem.tv/statistics/"
 
 /* period
 Period in miliseconds used to send the ping.
