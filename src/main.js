@@ -33,6 +33,10 @@ class P2PHLSStats extends UIPlugin {
       currentBitrate: 0,
       state: "IDLE",
       bufferLength: 0,
+      startupTime: 0,
+      watchingTime: 0,
+      rebufferingTime: 0,
+      rebuffers: 0
     }
     this.updateMetrics()
     setInterval(this.sendStats.bind(this), Settings.period)
@@ -41,6 +45,15 @@ class P2PHLSStats extends UIPlugin {
   addListeners() {
     Mousetrap.bind(['command+shift+s', 'ctrl+shift+s'], () => this.showOrHide())
     this.listenTo(this.container.playback, 'playback:p2phlsstats:add', (metric) => this.statsAdd(metric))
+    this.listenTo(this.container, 'container:stats:report', (metrics) => this.onStatsReport(metrics))
+  }
+
+  onStatsReport(metrics) {
+    this.metrics.startupTime = metrics['startupTime'] / 1000
+    this.metrics.watchingTime = metrics['watchingTime'] / 1000
+    this.metrics.rebufferingTime = metrics['rebufferingTime'] / 1000
+    this.metrics.rebuffers = metrics['rebuffers']
+    this.updateMetrics()
   }
 
   statsAdd(metric) {
@@ -83,16 +96,7 @@ class P2PHLSStats extends UIPlugin {
   }
 
   sendStats() {
-    var queryString = "?id=" + Settings.statsId +
-      "&status=" + this.metrics.status +
-      "&cfp=" + this.metrics.chunksFromP2P +
-      "&cfc=" + this.metrics.chunksFromCDN +
-      "&cs=" + this.metrics.chunksSent +
-      "&ss=" + this.metrics.swarmSize +
-      "&cb=" + this.metrics.currentBitrate +
-      "&state=" + this.metrics.state +
-      "&bl=" + this.metrics.bufferLength
-
+    var queryString = "?id=" + Settings.statsId + $.param(this.metrics)
     var url = Settings.URL + queryString
     $.ajax({url: url})
   }
