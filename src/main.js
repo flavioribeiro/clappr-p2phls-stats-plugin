@@ -96,7 +96,7 @@ class P2PHLSStats extends UIPlugin {
   }
 
   sendStats() {
-    var queryString = "?id=" + Settings.statsId + $.param(this.metrics)
+    var queryString = "?id=" + Settings.statsId + "&" + $.param(this.metrics)
     var url = Settings.URL + queryString
     $.ajax({url: url})
   }
