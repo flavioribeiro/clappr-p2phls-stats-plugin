@@ -49,9 +49,15 @@ class P2PHLSStats extends UIPlugin {
   }
 
   onStatsReport(metrics) {
-    this.metrics.startupTime = metrics['startupTime'] / 1000
-    this.metrics.watchingTime = metrics['watchingTime'] / 1000
-    this.metrics.rebufferingTime = metrics['rebufferingTime'] / 1000
+    if (metrics['startupTime'] > 0) {
+      this.metrics.startupTime = metrics['startupTime'] / 1000
+    }
+    if (metrics['watchingTime'] > 0) {
+      this.metrics.watchingTime = metrics['watchingTime'] / 1000
+    }
+    if (metrics['rebufferingTime'] > 0) {
+      this.metrics.rebufferingTime = metrics['rebufferingTime'] / 1000
+    }
     this.metrics.rebuffers = metrics['rebuffers']
     this.updateMetrics()
   }
