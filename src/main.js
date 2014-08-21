@@ -7,7 +7,7 @@ var UIPlugin = require('ui_plugin');
 var JST = require('.././jst');
 var Styler = require('./styler');
 var Mousetrap = require('mousetrap');
-var Settings = require('./settings')
+var Settings = require('./settings');
 var $ = require('jquery');
 
 class P2PHLSStats extends UIPlugin {
@@ -36,7 +36,9 @@ class P2PHLSStats extends UIPlugin {
       startupTime: 0,
       watchingTime: 0,
       rebufferingTime: 0,
-      rebuffers: 0
+      rebuffers: 0,
+      occupiedSlots: 0,
+      totalSlots: 0
     }
     this.updateMetrics()
     setInterval(this.sendStats.bind(this), Settings.period)
