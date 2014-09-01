@@ -104,6 +104,8 @@ class P2PHLSStats extends UIPlugin {
   }
 
   sendStats() {
+    var percentOnP2P = (chunksFromP2P / chunksFromP2P + chunksFromCDN) * 100
+    this.metrics.percentOnP2P = percentOnP2P
     var queryString = "?id=" + Settings.statsId + "&" + $.param(this.metrics)
     var url = Settings.URL + queryString
     $.ajax({url: url})
