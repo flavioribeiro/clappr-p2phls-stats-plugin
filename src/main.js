@@ -28,7 +28,7 @@ class P2PHLSStats extends UIPlugin {
       status: "off",
       chunksFromCDN: 0,
       chunksFromP2P: 0,
-      chunksSent: '-',
+      chunksSent: 0,
       swarmSize: 0,
       currentBitrate: 0,
       state: "IDLE",
@@ -41,13 +41,17 @@ class P2PHLSStats extends UIPlugin {
       totalSlots: 0
     }
     this.updateMetrics()
-    setInterval(this.sendStats.bind(this), Settings.period)
   }
 
   addListeners() {
     Mousetrap.bind(['command+shift+s', 'ctrl+shift+s'], () => this.showOrHide())
     this.listenTo(this.container.playback, 'playback:p2phlsstats:add', (metric) => this.statsAdd(metric))
+    this.listenTo(this.container.playback, 'playback:play', () => this.startPing())
     this.listenTo(this.container, 'container:stats:report', (metrics) => this.onStatsReport(metrics))
+  }
+
+  startPing() {
+    setInterval(() => this.sendStats(), Settings.period)
   }
 
   onStatsReport(metrics) {
@@ -104,8 +108,8 @@ class P2PHLSStats extends UIPlugin {
   }
 
   sendStats() {
-    var percentOnP2P = (chunksFromP2P / chunksFromP2P + chunksFromCDN) * 100
-    this.metrics.percentOnP2P = percentOnP2P
+    var p2pRatio = (this.metrics.chunksFromP2P / (this.metrics.chunksFromP2P + this.metrics.chunksFromCDN)) * 100
+    this.metrics.p2pRatio = p2pRatio
     var queryString = "?id=" + Settings.statsId + "&" + $.param(this.metrics)
     var url = Settings.URL + queryString
     $.ajax({url: url})
