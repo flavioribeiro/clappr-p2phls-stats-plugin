@@ -51,7 +51,9 @@ class P2PHLSStats extends UIPlugin {
   }
 
   startPing() {
-    setInterval(() => this.sendStats(), Settings.period)
+    if (!this.pingId) {
+      this.pingId = setInterval(() => this.sendStats(), Settings.period)
+    }
   }
 
   onStatsReport(metrics) {
