@@ -20,7 +20,7 @@ class P2PHLSStats extends UIPlugin {
             'class': 'p2phlsstats'}
   }
 
-  initialize(options) {
+  constructor(options) {
     super(options)
     this.render()
     this.addListeners()
