@@ -106,6 +106,7 @@ class P2PHLSStats extends UIPlugin {
     var style = Styler.getStyleFor(this.name)
     this.container.$el.append(style)
     this.container.$el.append(this.$el)
+    this.hide()
     return this
   }
 
