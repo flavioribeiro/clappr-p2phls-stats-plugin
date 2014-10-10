@@ -3,7 +3,7 @@
 // Use of this source code is governed by Apache
 // license that can be found in the LICENSE file.
 
-var UIPlugin = require('ui_plugin');
+var UIPlugin = require('ui_container_plugin');
 var JST = require('.././jst');
 var Styler = require('./styler');
 var Mousetrap = require('mousetrap');
