@@ -13,8 +13,9 @@ Settings.URL = "http://bem.tv/statistics/"
 /* period
 Period in miliseconds used to send the ping.
 Ex: if period = 60000, it will send stats
-every minute. */
-Settings.period = 30000
+every minute. If period = 0, no stats will
+be sent. */
+Settings.period = 0
 
 /* statsId
 Unique ID used to identify the player. */
