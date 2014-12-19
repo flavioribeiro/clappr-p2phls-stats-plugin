@@ -11,18 +11,7 @@
   "version": "0.0.10",
   "dependencies": {
     "clappr": "latest",
-    "jquery": "2.1.1",
-    "mousetrap": "0.0.1",
-    "underscore": "1.7.0"
-  },
-  "browserify-shim": {
-    "jquery": "global:$",
-    "underscore": "global:_"
-  },
-  "browserify": {
-    "transform": [
-      "browserify-shim"
-    ]
+    "mousetrap": "0.0.1"
   },
   "devDependencies": {
     "browserify": "^4.2.3",

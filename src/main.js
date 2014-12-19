@@ -8,7 +8,7 @@ var JST = require('.././jst');
 var Styler = require('./styler');
 var Mousetrap = require('mousetrap');
 var Settings = require('./settings');
-var $ = require('jquery');
+var $ = require('zepto');
 
 class P2PHLSStats extends UIPlugin {
   get name() { return 'p2phlsstats' }
