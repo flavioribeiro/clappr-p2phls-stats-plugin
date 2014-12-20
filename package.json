@@ -8,7 +8,7 @@
     "statistics",
     "peer-to-peer"
   ],
-  "version": "0.0.10",
+  "version": "0.0.11",
   "dependencies": {
     "clappr": "latest",
     "mousetrap": "0.0.1"
